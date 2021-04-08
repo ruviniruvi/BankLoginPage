@@ -3,10 +3,15 @@ import java.sql.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
 
 public class MidtermProject {
 
@@ -29,16 +34,35 @@ public class MidtermProject {
 			}
 		});
 	}
+	private JFrame MidtermProject;
+	
 
 	/**
 	 * Create the application.
 	 */
 	public MidtermProject() {
 		initialize();
+		Connect();
 	}
 	
 	Connection con;
 	PreparedStatement pst;
+	
+	public void Connect() {
+		try {
+			//insert your own for this line and con; it's just an example
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/bankLogin", "root","");
+		}
+		catch (ClassNotFoundException ex)
+		{
+			
+		}
+		catch (SQLException ex)
+		{
+			
+		}
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -55,7 +79,7 @@ public class MidtermProject {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(55, 119, 665, 308);
+		panel.setBounds(55, 121, 665, 308);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -80,16 +104,46 @@ public class MidtermProject {
 		panel.add(txtPW);
 		
 		JButton btnNewButton = new JButton("Login");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+			/*public void actionPerformed(ActionEvent e) {
+				if(txtUN.getText().isEmpty() || txtPW.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Please Input Username and Password." + "!");
+				} else if (txtUN.getText().equals("admin") && txtPW.getText().equals("ThisIsMyPass")) {
+				} else {
+					JOptionPane.showMessageDialog(null,  "Incorrect Username and Password. " + "!");
+				}
+				
+			} */
+			
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton.setBounds(48, 218, 105, 38);
 		panel.add(btnNewButton);
 		
 		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtUN.setText(null);
+				txtPW.setText(null);
+			}
+		});
 		btnClear.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnClear.setBounds(171, 218, 105, 38);
 		panel.add(btnClear);
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MidtermProject = new JFrame("Exit");
+				if(JOptionPane.showConfirmDialog(MidtermProject, "Are you sure you want to exit","Bank Management Login", JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION) {
+						System.exit(0);
+					}
+				}
+		});
+			
 		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnExit.setBounds(288, 218, 105, 38);
 		panel.add(btnExit);
@@ -108,5 +162,17 @@ public class MidtermProject {
 		btnForgotPassword.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnForgotPassword.setBounds(496, 200, 157, 38);
 		panel.add(btnForgotPassword);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(48, 203, 1, 2);
+		panel.add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(48, 203, 439, -13);
+		panel.add(separator_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(37, 203, 356, 2);
+		panel.add(separator_2);
 	}
 }
