@@ -60,7 +60,8 @@ public class MidtermProject {
 		try {
 			// insert your own for this line and con; it's just an example
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
+			con = DriverManager
+					.getConnection("jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
 		} catch (ClassNotFoundException ex) {
 
 		} catch (SQLException ex) {
@@ -110,6 +111,7 @@ public class MidtermProject {
 				@SuppressWarnings("deprecation")
 				String PW = txtPW.getText();
 				try {
+					// Connect java code with the SQL server
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 					Connection con = DriverManager.getConnection(
 							"jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
@@ -121,6 +123,7 @@ public class MidtermProject {
 
 					if (rs.next()) {
 						JOptionPane.showMessageDialog(null, " Login Sucessfully.");
+						// when login success link to the Administration page
 						AdministrationFrame ad = new AdministrationFrame();
 						ad.setVisible(true);
 

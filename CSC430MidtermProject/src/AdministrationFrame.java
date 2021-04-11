@@ -14,9 +14,6 @@ import java.awt.event.ActionEvent;
 
 public class AdministrationFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -84,7 +81,7 @@ public class AdministrationFrame extends JFrame {
 		JButton btnNewButton_4 = new JButton("Fraud Alerts");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				// linking to the fraud alerts page
 				FraudAlertFrame fd = new FraudAlertFrame();
 				fd.setVisible(true);
 

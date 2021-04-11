@@ -14,7 +14,6 @@ import java.awt.event.ActionEvent;
 
 public class FraudAlertFrame extends JFrame {
 
-	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -60,6 +59,8 @@ public class FraudAlertFrame extends JFrame {
 		JButton btnNewButton = new JButton("Credit Card Fraud Alerts");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				// link to the Credit Card Fraud Alerts page
 				CreditCardFraudAlertsFrame cr = new CreditCardFraudAlertsFrame();
 				cr.setVisible(true);
 
