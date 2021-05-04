@@ -72,18 +72,26 @@ public class AdministrationFrame extends JFrame {
 		btnNewButton_2.setBounds(23, 198, 181, 29);
 		contentPane.add(btnNewButton_2);
 
-		JButton btnNewButton_3 = new JButton("Deposites");
+		JButton btnNewButton_3 = new JButton("Deposits");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// linking to the fraud alerts page
 				DepositeFrame df = new DepositeFrame();
 				df.setVisible(true);
 				
+				//DepositeFrame dp = new DepositeFrame();
+				df.toBack();
+				df.setVisible(true);
+				df.toFront();
+				
+				
+				
+				
 			}
 		});
 		btnNewButton_3.setBackground(new Color(220, 220, 220));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_3.setBounds(336, 96, 167, 29);
+		btnNewButton_3.setBounds(322, 96, 181, 29);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Fraud Alerts");
@@ -97,13 +105,13 @@ public class AdministrationFrame extends JFrame {
 		});
 		btnNewButton_4.setBackground(new Color(220, 220, 220));
 		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_4.setBounds(336, 144, 167, 29);
+		btnNewButton_4.setBounds(322, 144, 181, 29);
 		contentPane.add(btnNewButton_4);
 
 		JButton btnNewButton_5 = new JButton("Customer Contacts");
 		btnNewButton_5.setBackground(new Color(220, 220, 220));
 		btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_5.setBounds(336, 198, 167, 29);
+		btnNewButton_5.setBounds(322, 198, 181, 29);
 		contentPane.add(btnNewButton_5);
 
 		JButton btnNewButton_6 = new JButton("Logout");

@@ -87,7 +87,7 @@ public class DepositeFrame extends JFrame {
 	public DepositeFrame() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 644, 466);
+		setBounds(100, 100, 663, 466);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 51, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -164,7 +164,7 @@ public class DepositeFrame extends JFrame {
 
 			}
 		});
-		btnNewButton.setBounds(495, 124, 89, 23);
+		btnNewButton.setBounds(486, 124, 69, 23);
 		contentPane.add(btnNewButton);
 
 		textAmount = new JTextField();
@@ -178,42 +178,69 @@ public class DepositeFrame extends JFrame {
 
 				// This is not working yet
 
-				/*
-				 * try {
-				 * 
-				 * String acNo = txtacc.getText(); String depositAmount = textAmount.getText();
-				 * 
-				 * // Connect java code with the SQL server
-				 * Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); Connection con
-				 * = DriverManager.getConnection(
-				 * "jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;"
-				 * );
-				 * 
-				 * insert =
-				 * con.prepareStatement("INSERT INTO DEBITCARDS(DEPOSITE_AMOUNT) VALUES(?)");
-				 * insert.setString(1, acNo); // ResultSet rs = insert.executeQuery();
-				 * 
-				 * insert.executeUpdate();
-				 * 
-				 * // String depositAmount = textAmount.getText();
-				 * 
-				 * update = con.prepareStatement(
-				 * "UPDATE ACCOUNTS SET CURRENT_BALANCE = CURRENT_BALANCE + ? WHERE ACCOUNT_NUMBER =? "
-				 * );
-				 * 
-				 * update.setString(1, depositAmount);
-				 * 
-				 * update.setString(2, acNo); update.executeUpdate();
-				 * 
-				 * JOptionPane.showMessageDialog(null, "  Please try again! ."); con.close(); }
-				 * catch (Exception e1) { System.out.print(e); }
-				 */
+				try {
+					// con.setAutoCommit(false); // both SQL queries should work for the deposit
+					// money
+					String acNo = txtacc.getText();
+
+					String id = textID.getText();
+					String firstname = textFN.getText();
+					String lastname = textLN.getText();
+					String date = textDate.getText();
+					String depositAmount = textAmount.getText();
+
+					// Connect java code with the SQL server
+					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+					Connection con = DriverManager.getConnection(
+							"jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
+
+					insert = con.prepareStatement(
+							"INSERT INTO TRANSACTIONS( ACCOUNT_NUMBER, CUSTOMER_FIRST_NAME,CUSTOMER_LAST_NAME,  CUSTOMER_ID, TRANSACTION_DATE,  DEPOSIT_AMOUNT) VALUES(?,?,?,?,?,?  )");
+
+					insert.setString(1, acNo);
+					insert.setString(2, firstname);
+					insert.setString(3, lastname);
+					insert.setString(4, id);
+					insert.setString(5, date);
+					insert.setString(6, depositAmount);
+
+					insert.executeUpdate();
+
+					// update the current balance when customer deposited
+
+					update = con.prepareStatement(
+							"UPDATE ACCOUNTS SET CURRENT_BALANCE = CURRENT_BALANCE + ? WHERE ACCOUNT_NUMBER =? ");
+
+					update.setString(1, depositAmount);
+
+					update.setString(2, acNo);
+					update.executeUpdate();
+
+					JOptionPane.showMessageDialog(null, "  Successfully deposited! .");
+					con.commit();
+
+					con.close();
+				} catch (Exception e1) {
+					System.out.print(e);
+					/*
+					 * try { con.rollback(); } catch (SQLException e2) { // TODO Auto-generated
+					 * catch block e2.printStackTrace(); }
+					 */
+				}
+
 			}
 		});
 		btnNewButton_1.setBounds(276, 364, 89, 23);
 		contentPane.add(btnNewButton_1);
 
-		JButton btnNewButton_2 = new JButton("Cancel");
+		JButton btnNewButton_2 = new JButton("Clear");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				textAmount.setText(null);
+
+			}
+		});
 		btnNewButton_2.setBounds(390, 364, 89, 23);
 		contentPane.add(btnNewButton_2);
 
@@ -262,5 +289,30 @@ public class DepositeFrame extends JFrame {
 		textDate.setBounds(279, 170, 86, 20);
 		contentPane.add(textDate);
 		textDate.setColumns(10);
+
+		JButton btnNewButton_3 = new JButton("Clear");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtacc.setText(null);
+			}
+		});
+		btnNewButton_3.setBounds(568, 124, 69, 23);
+		contentPane.add(btnNewButton_3);
+
+		JButton btnNewButton_4 = new JButton("Back");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// back to the administration page
+				AdministrationFrame ad = new AdministrationFrame();
+				ad.toBack();
+				setVisible(false);
+				ad.toFront();
+				new AdministrationFrame().setState(java.awt.Frame.NORMAL);
+
+			}
+
+		});
+		btnNewButton_4.setBounds(164, 364, 89, 23);
+		contentPane.add(btnNewButton_4);
 	}
 }
