@@ -73,6 +73,14 @@ public class AdministrationFrame extends JFrame {
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("Deposites");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// linking to the fraud alerts page
+				DepositeFrame df = new DepositeFrame();
+				df.setVisible(true);
+				
+			}
+		});
 		btnNewButton_3.setBackground(new Color(220, 220, 220));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_3.setBounds(336, 96, 167, 29);

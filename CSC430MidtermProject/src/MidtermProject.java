@@ -26,9 +26,9 @@ public class MidtermProject {
 	private JFrame frame;
 	private JTextField txtUN;
 
-	/**
-	 * Launch the application.
-	 */
+	
+	// Launch the application.
+	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,9 +44,9 @@ public class MidtermProject {
 
 	private JFrame MidtermProject; // sets it for exit button purpose
 
-	/**
-	 * Create the application.
-	 */
+	
+	 // Create the application.
+	 
 	public MidtermProject() {
 		initialize();
 		Connect();
@@ -69,9 +69,9 @@ public class MidtermProject {
 		}
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	
+	 // Initialize the contents of the frame.
+	
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 773, 656);
@@ -108,7 +108,8 @@ public class MidtermProject {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String UN = txtUN.getText();
-				@SuppressWarnings("deprecation")
+				//@SuppressWarnings("deprecation")
+				//String PW = txtPW.getText();
 				String PW = txtPW.getText();
 				try {
 					// Connect java code with the SQL server
@@ -128,7 +129,7 @@ public class MidtermProject {
 						ad.setVisible(true);
 
 					} else
-						JOptionPane.showMessageDialog(null, " Incorrect Username and Password.");
+						JOptionPane.showMessageDialog(null, " Incorrect Username or Password.");
 					con.close();
 				} catch (Exception e1) {
 					System.out.print(e);
@@ -207,3 +208,9 @@ public class MidtermProject {
 
 	}
 }
+
+
+
+
+
+
