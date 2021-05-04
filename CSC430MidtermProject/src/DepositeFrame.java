@@ -179,9 +179,10 @@ public class DepositeFrame extends JFrame {
 				// This is not working yet
 
 				try {
-					//con.setAutoCommit(false); // both SQL queries should work for the deposit money
+					// con.setAutoCommit(false); // both SQL queries should work for the deposit
+					// money
 					String acNo = txtacc.getText();
-					
+
 					String id = textID.getText();
 					String firstname = textFN.getText();
 					String lastname = textLN.getText();
@@ -193,18 +194,19 @@ public class DepositeFrame extends JFrame {
 					Connection con = DriverManager.getConnection(
 							"jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
 
-					insert = con.prepareStatement("INSERT INTO TRANSACTIONS( ACCOUNT_NUMBER, CUSTOMER_FIRST_NAME,CUSTOMER_LAST_NAME,  CUSTOMER_ID, TRANSACTION_DATE,  DEPOSIT_AMOUNT) VALUES(?,?,?,?,?,?  )");
-					
-					insert.setString(1, acNo); 
-					insert.setString(2,firstname); 
-					insert.setString(3, lastname); 
-					insert.setString(4, id); 
-					insert.setString(5, date); 
-					insert.setString(6, depositAmount); 
+					insert = con.prepareStatement(
+							"INSERT INTO TRANSACTIONS( ACCOUNT_NUMBER, CUSTOMER_FIRST_NAME,CUSTOMER_LAST_NAME,  CUSTOMER_ID, TRANSACTION_DATE,  DEPOSIT_AMOUNT) VALUES(?,?,?,?,?,?  )");
+
+					insert.setString(1, acNo);
+					insert.setString(2, firstname);
+					insert.setString(3, lastname);
+					insert.setString(4, id);
+					insert.setString(5, date);
+					insert.setString(6, depositAmount);
 
 					insert.executeUpdate();
 
-				// update the current balance when customer deposited 
+					// update the current balance when customer deposited
 
 					update = con.prepareStatement(
 							"UPDATE ACCOUNTS SET CURRENT_BALANCE = CURRENT_BALANCE + ? WHERE ACCOUNT_NUMBER =? ");
@@ -216,16 +218,14 @@ public class DepositeFrame extends JFrame {
 
 					JOptionPane.showMessageDialog(null, "  Successfully deposited! .");
 					con.commit();
-					
+
 					con.close();
 				} catch (Exception e1) {
 					System.out.print(e);
-					/*try {
-						con.rollback();
-					} catch (SQLException e2) {
-						// TODO Auto-generated catch block
-						e2.printStackTrace();
-					}*/
+					/*
+					 * try { con.rollback(); } catch (SQLException e2) { // TODO Auto-generated
+					 * catch block e2.printStackTrace(); }
+					 */
 				}
 
 			}
@@ -236,10 +236,9 @@ public class DepositeFrame extends JFrame {
 		JButton btnNewButton_2 = new JButton("Clear");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				textAmount.setText(null);
-				
-				
+
 			}
 		});
 		btnNewButton_2.setBounds(390, 364, 89, 23);
@@ -290,7 +289,7 @@ public class DepositeFrame extends JFrame {
 		textDate.setBounds(279, 170, 86, 20);
 		contentPane.add(textDate);
 		textDate.setColumns(10);
-		
+
 		JButton btnNewButton_3 = new JButton("Clear");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -299,20 +298,19 @@ public class DepositeFrame extends JFrame {
 		});
 		btnNewButton_3.setBounds(568, 124, 69, 23);
 		contentPane.add(btnNewButton_3);
-		
+
 		JButton btnNewButton_4 = new JButton("Back");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//back to the administration page
+				// back to the administration page
 				AdministrationFrame ad = new AdministrationFrame();
 				ad.toBack();
 				setVisible(false);
 				ad.toFront();
 				new AdministrationFrame().setState(java.awt.Frame.NORMAL);
-				
+
 			}
 
-			
 		});
 		btnNewButton_4.setBounds(164, 364, 89, 23);
 		contentPane.add(btnNewButton_4);
