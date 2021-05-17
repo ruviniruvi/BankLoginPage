@@ -60,7 +60,7 @@ public class DepositeFrame extends JFrame {
 
 	public void Connect() {
 		try {
-			// insert your own for this line and con; it's just an example
+			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager
 					.getConnection("jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
@@ -175,8 +175,6 @@ public class DepositeFrame extends JFrame {
 		JButton btnNewButton_1 = new JButton("OK");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				// This is not working yet
 
 				try {
 					// con.setAutoCommit(false); // both SQL queries should work for the deposit

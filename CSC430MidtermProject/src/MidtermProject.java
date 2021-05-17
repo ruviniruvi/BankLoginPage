@@ -4,6 +4,7 @@
 //this code references a database which holds the bank employee information including username and password
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.Window;
 import java.sql.*;
 
 import javax.swing.JFrame;
@@ -15,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
@@ -26,9 +29,8 @@ public class MidtermProject {
 	private JFrame frame;
 	private JTextField txtUN;
 
-	
 	// Launch the application.
-	 
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,9 +46,8 @@ public class MidtermProject {
 
 	private JFrame MidtermProject; // sets it for exit button purpose
 
-	
-	 // Create the application.
-	 
+	// Create the application.
+
 	public MidtermProject() {
 		initialize();
 		Connect();
@@ -69,9 +70,8 @@ public class MidtermProject {
 		}
 	}
 
-	
-	 // Initialize the contents of the frame.
-	
+	// Initialize the contents of the frame.
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 773, 656);
@@ -108,8 +108,7 @@ public class MidtermProject {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String UN = txtUN.getText();
-				//@SuppressWarnings("deprecation")
-				//String PW = txtPW.getText();
+				// @SuppressWarnings("deprecation")
 				String PW = txtPW.getText();
 				try {
 					// Connect java code with the SQL server
@@ -169,16 +168,53 @@ public class MidtermProject {
 		panel.add(btnExit);
 
 		JButton btnAboutUs = new JButton("About Us");
+		btnAboutUs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				/*
+				 * //linking to AboutUs page AboutUs au = new AboutUs(); frame.setVisible(true);
+				 * 
+				 */
+				
+				
+				
+				AboutUs au = new AboutUs(); 
+				au.setVisible(true);
+
+			}
+		});
 		btnAboutUs.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnAboutUs.setBounds(484, 89, 169, 30);
 		panel.add(btnAboutUs);
 
 		JButton btnHelp = new JButton("Help");
+		btnHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				AboutUs hp = new AboutUs(); 
+				hp.setVisible(true);
+			}
+		});
 		btnHelp.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnHelp.setBounds(484, 143, 169, 30);
 		panel.add(btnHelp);
 
 		JButton btnForgotPassword = new JButton("Forgot Password");
+		btnForgotPassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				// linking to the ForgotPassword page
+				ForgotPasswordFrame fp = new ForgotPasswordFrame();
+				fp.setVisible(true);
+
+				fp.toBack();
+				fp.setVisible(true);
+				fp.toFront();
+
+			}
+		});
 		btnForgotPassword.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnForgotPassword.setBounds(463, 200, 190, 38);
 		panel.add(btnForgotPassword);
@@ -207,10 +243,19 @@ public class MidtermProject {
 		frame.getContentPane().add(lblNewLabel_3);
 
 	}
+
+	public void toBack() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void toFront() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setState(int normal) {
+		// TODO Auto-generated method stub
+
+	}
 }
-
-
-
-
-
-

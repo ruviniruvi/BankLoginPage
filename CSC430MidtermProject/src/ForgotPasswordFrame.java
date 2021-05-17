@@ -24,9 +24,6 @@ import javax.swing.JPasswordField;
 
 public class ForgotPasswordFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textEmail;
@@ -50,12 +47,12 @@ public class ForgotPasswordFrame extends JFrame {
 	}
 
 	Connection con;
-	PreparedStatement insert;
+	PreparedStatement insert, update;
 	private JPasswordField newPass;
 
 	public void Connect() {
 		try {
-			// insert your own for this line and con; it's just an example
+			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager
 					.getConnection("jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
@@ -120,63 +117,42 @@ public class ForgotPasswordFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String email = textEmail.getText();
+				try {
+					//connection to the database to get and verify data for update password
 
-				String securityAnswer = textSA.getText();
-				String sequrityQ = textSQ.getText();
+					String email = textEmail.getText();
+					String securityAnswer = textSA.getText();
+					String sequrityQ = textSQ.getText();
+					String newPassword = newPass.getText();
 
-				String newPassword = newPass.getText();
+					// Connect java code with the SQL server
+					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+					Connection con = DriverManager.getConnection(
+							"jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
 
-				/*
-				 * try {
-				 * 
-				 * 
-				 * 
-				 * 
-				 * // Connect java code with the SQL server
-				 * Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); Connection con
-				 * = DriverManager.getConnection(
-				 * "jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;"
-				 * ); Statement st=con.createStatement();
-				 * 
-				 * 
-				 * //ResultSet rs =st.executeQuery("SELECT * FROM USERS WHERE BANKER_EMAIL ='"+
-				 * email+"' and  SECURITY_QUESTION_ANSWER = '"+ securityAnswer +"'" );
-				 * //insert.setString(1, securityAnswer ); //ResultSet rs =
-				 * insert.executeQuery();
-				 * 
-				 * insert.setString(1, securityAnswer ); insert.setString(2, newPassword);
-				 * 
-				 * 
-				 * insert.executeUpdate();
-				 * 
-				 * // update the current balance when customer deposited
-				 * 
-				 * //update = con.prepareStatement(
-				 * //"UPDATE USERS  SET EMPLOYEE_PASSWORD = ?  WHERE SECURITY_QUESTION_ANSWER =? "
-				 * );
-				 * 
-				 * 
-				 * 
-				 * //update.setString(2, newPassword);
-				 * 
-				 * //update.setString(2, acNo); //update.executeUpdate();
-				 * 
-				 * JOptionPane.showMessageDialog(null, "  Successfully updated! .");
-				 * con.commit();
-				 * 
-				 * con.close(); } catch (Exception e1) { System.out.print(e);
-				 * 
-				 * 
-				 * }
-				 * 
-				 * 
-				 * 
-				 * 
-				 * 
-				 */
+					// update the password when customer enter new password
+
+					update = con.prepareStatement("UPDATE USERS SET EMPLOYEE_PASSWORD ='" + newPassword
+							+ " WHERE BANKER_EMAIL = '" + email + " AND SECURITY_QUESTION_ANSWER = '" + sequrityQ);
+
+					update.setString(1, newPassword);
+
+					update.executeUpdate();
+
+					JOptionPane.showMessageDialog(null, "  Successfully updated! .");
+					con.commit();
+
+					con.close();
+				} catch (Exception e1) {
+					System.out.print(e);
+					/*
+					 * try { con.rollback(); } catch (SQLException e2) { // TODO Auto-generated
+					 * catch block e2.printStackTrace(); }
+					 */
+				}
 
 			}
+
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.setBounds(304, 340, 164, 23);

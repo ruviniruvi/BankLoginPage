@@ -79,14 +79,9 @@ public class AdministrationFrame extends JFrame {
 				DepositeFrame df = new DepositeFrame();
 				df.setVisible(true);
 				
-				//DepositeFrame dp = new DepositeFrame();
 				df.toBack();
 				df.setVisible(true);
-				df.toFront();
-				
-				
-				
-				
+				df.toFront();	
 			}
 		});
 		btnNewButton_3.setBackground(new Color(220, 220, 220));
@@ -101,6 +96,10 @@ public class AdministrationFrame extends JFrame {
 				FraudAlertFrame fd = new FraudAlertFrame();
 				fd.setVisible(true);
 
+				
+				fd.toBack();
+				fd.setVisible(true);
+				fd.toFront();	
 			}
 		});
 		btnNewButton_4.setBackground(new Color(220, 220, 220));

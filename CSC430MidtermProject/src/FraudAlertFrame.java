@@ -78,6 +78,17 @@ public class FraudAlertFrame extends JFrame {
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Back");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AdministrationFrame ad = new AdministrationFrame();
+				ad.toBack();
+				setVisible(false);
+				ad.toFront();
+				new AdministrationFrame().setState(java.awt.Frame.NORMAL);
+				
+			}
+		});
 		btnNewButton_2.setBackground(new Color(220, 220, 220));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_2.setBounds(85, 214, 89, 23);
