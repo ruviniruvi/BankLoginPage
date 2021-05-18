@@ -108,12 +108,34 @@ public class AdministrationFrame extends JFrame {
 		contentPane.add(btnNewButton_4);
 
 		JButton btnNewButton_5 = new JButton("Customer Contacts");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				CustomerContacts cus = new CustomerContacts();
+				cus.setVisible(true);
+
+				
+				cus.toBack();
+				cus.setVisible(true);
+				cus.toFront();	
+				
+				
+			}
+		});
 		btnNewButton_5.setBackground(new Color(220, 220, 220));
 		btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_5.setBounds(322, 198, 181, 29);
 		contentPane.add(btnNewButton_5);
 
 		JButton btnNewButton_6 = new JButton("Logout");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				MidtermProject window = new MidtermProject();
+				window.frame.setVisible(true);
+			}
+		});
 		btnNewButton_6.setBackground(new Color(220, 220, 220));
 		btnNewButton_6.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_6.setBounds(231, 292, 89, 23);

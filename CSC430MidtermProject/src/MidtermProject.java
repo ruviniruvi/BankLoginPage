@@ -26,7 +26,7 @@ import java.awt.Color;
 
 public class MidtermProject {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField txtUN;
 
 	// Launch the application.
@@ -258,4 +258,11 @@ public class MidtermProject {
 		// TODO Auto-generated method stub
 
 	}
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
