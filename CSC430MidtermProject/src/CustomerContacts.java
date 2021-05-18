@@ -1,3 +1,4 @@
+import java.awt.EventQueue;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.sql.*;
@@ -26,7 +27,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
 
-public class DepositeFrame extends JFrame {
+public class CustomerContacts extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -40,7 +41,7 @@ public class DepositeFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DepositeFrame frame = new DepositeFrame();
+					CustomerContacts frame = new CustomerContacts();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -71,20 +72,11 @@ public class DepositeFrame extends JFrame {
 		}
 	}
 
-	// show current date before deposit money to the account
-	public void date() {
-
-		DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-		LocalDateTime currentTime = LocalDateTime.now();
-		String date = currentDate.format(currentTime);
-
-		textDate.setText(date);
-	}
-
 	/**
 	 * Create the frame.
 	 */
-	public DepositeFrame() {
+
+	public CustomerContacts() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 663, 466);
@@ -94,39 +86,29 @@ public class DepositeFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Deposits");
+		JLabel lblNewLabel = new JLabel("Customer Contacts");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel.setBounds(164, 34, 252, 32);
-		contentPane.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Enter the Account Number");
+		contentPane.add(lblNewLabel);
+		JLabel lblNewLabel_1 = new JLabel("Enter ID customer");
 		lblNewLabel_1.setForeground(new Color(0, 0, 0));
 		lblNewLabel_1.setBackground(new Color(0, 0, 0));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_1.setBounds(67, 122, 199, 24);
 		contentPane.add(lblNewLabel_1);
 
-		JLabel lblCurrentBalance = new JLabel("Current Balance");
-		lblCurrentBalance.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblCurrentBalance.setBounds(67, 202, 200, 24);
-		contentPane.add(lblCurrentBalance);
-
-		JLabel lblNewLabel_2 = new JLabel("Deposit Amount");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_2.setBounds(67, 334, 200, 24);
-		contentPane.add(lblNewLabel_2);
-
 		txtacc = new JTextField();
 		txtacc.setBounds(276, 125, 192, 20);
 		contentPane.add(txtacc);
 		txtacc.setColumns(10);
 
-		JButton btnNewButton = new JButton("Find");
+		JButton btnNewButton = new JButton("Search");
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("null")
 			public void actionPerformed(ActionEvent e) {
-				// this is for the account search before deposit to the customer account
+				//This serch customer id
 				try {
 
 					String acNo = txtacc.getText();
@@ -144,26 +126,38 @@ public class DepositeFrame extends JFrame {
 					if (rs.next()) {
 
 						String firstname = rs.getString(1);
-						String balance = rs.getString(4);
 						String lastname = rs.getString(2);
-						String id = rs.getString(3);
+						String phonenumber = rs.getString(3);
+						String dateofbirth = rs.getString(4);
+						String address = rs.getString(5);
+						String zipcode = rs.getString(6);
 
-						textblnc.setText(balance.trim());
 						textFN.setText(firstname.trim());
 						textLN.setText(lastname.trim());
-						textID.setText(id.trim());
+						textID.setText(phonenumber.trim());
+						textID.setText(dateofbirth.trim());
+						textID.setText(address.trim());
+						textID.setText(zipcode.trim());
 
 					} else
-						JOptionPane.showMessageDialog(null, " Incorrect customer account number. Please try again! .");
+						JOptionPane.showMessageDialog(null, " Incorrect customer ID number. Please try again! .");
 					con.close();
 				} catch (Exception e1) {
 					System.out.print(e);
 				}
-
-				date();
-
 			}
 		});
+
+		JLabel lblSecondName = new JLabel("Customer Second Name");
+		lblSecondName.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblSecondName.setBounds(67, 202, 200, 24);
+		contentPane.add(lblSecondName);
+
+		JLabel lblNewLabel_2 = new JLabel("Zip Code");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(67, 334, 200, 24);
+		contentPane.add(lblNewLabel_2);
+
 		btnNewButton.setBounds(486, 124, 69, 23);
 		contentPane.add(btnNewButton);
 
@@ -176,16 +170,19 @@ public class DepositeFrame extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				// This is not working yet
+
 				try {
-					// con.setAutoCommit(false); // both SQL queries should work for the deposit
-					// money
+
 					String acNo = txtacc.getText();
 
 					String id = textID.getText();
 					String firstname = textFN.getText();
 					String lastname = textLN.getText();
-					String date = textDate.getText();
-					String depositAmount = textAmount.getText();
+					String phonenumber = textAmount.getText();
+					String dateofbirth = textAmount.getText();
+					String address = textAmount.getText();
+					String zipcode = textAmount.getText();
 
 					// Connect java code with the SQL server
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -193,28 +190,18 @@ public class DepositeFrame extends JFrame {
 							"jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
 
 					insert = con.prepareStatement(
-							"INSERT INTO TRANSACTIONS( ACCOUNT_NUMBER, CUSTOMER_FIRST_NAME,CUSTOMER_LAST_NAME,  CUSTOMER_ID, TRANSACTION_DATE,  DEPOSIT_AMOUNT) VALUES(?,?,?,?,?,?  )");
+							"INSERT INTO TRANSACTIONS( CUSTOMER_FIRST_NAME,CUSTOMER_LAST_NAME,  CUSTOMER_PHONE_NUMBER, CUSTOMER_DATE_OF_BIRTH,CUSTOMER_ADDRESS, CUSTOMER_ZIP_CODE) VALUES(?,?,?,?,?,?  )");
 
-					insert.setString(1, acNo);
-					insert.setString(2, firstname);
-					insert.setString(3, lastname);
-					insert.setString(4, id);
-					insert.setString(5, date);
-					insert.setString(6, depositAmount);
+					insert.setString(1, firstname);
+					insert.setString(2, lastname);
+					insert.setString(3, phonenumber);
+					insert.setString(4, dateofbirth);
+					insert.setString(5, address);
+					insert.setString(6, zipcode);
 
 					insert.executeUpdate();
 
-					// update the current balance when customer deposited
-
-					update = con.prepareStatement(
-							"UPDATE ACCOUNTS SET CURRENT_BALANCE = CURRENT_BALANCE + ? WHERE ACCOUNT_NUMBER =? ");
-
-					update.setString(1, depositAmount);
-
-					update.setString(2, acNo);
-					update.executeUpdate();
-
-					JOptionPane.showMessageDialog(null, "  Successfully deposited! .");
+					JOptionPane.showMessageDialog(null, "  Successfully Customer Contacts! .");
 					con.commit();
 
 					con.close();
@@ -239,25 +226,26 @@ public class DepositeFrame extends JFrame {
 
 			}
 		});
+
 		btnNewButton_2.setBounds(390, 364, 89, 23);
 		contentPane.add(btnNewButton_2);
-
-		JLabel lblNewLabel_4 = new JLabel("Customer First Name");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_4.setBounds(67, 237, 199, 18);
-		contentPane.add(lblNewLabel_4);
 
 		textblnc = new JTextField();
 		textblnc.setBounds(277, 205, 189, 20);
 		contentPane.add(textblnc);
 		textblnc.setColumns(10);
 
-		textFN = new JTextField();
-		textFN.setBounds(279, 237, 189, 20);
-		contentPane.add(textFN);
-		textFN.setColumns(10);
+		JLabel lblPhoneNumber8 = new JLabel("Date OF BIRTH");
+		lblPhoneNumber8.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblPhoneNumber8.setBounds(67, 263, 199, 24);
+		contentPane.add(lblPhoneNumber8);
 
-		JLabel lblNewLabel_3 = new JLabel("Customer Last Name");
+		textblnc = new JTextField();
+		textblnc.setBounds(277, 205, 189, 20);
+		contentPane.add(textblnc);
+		textblnc.setColumns(10);
+
+		JLabel lblNewLabel_3 = new JLabel("Date OF BIRTH");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_3.setBounds(67, 263, 199, 24);
 		contentPane.add(lblNewLabel_3);
@@ -267,7 +255,17 @@ public class DepositeFrame extends JFrame {
 		contentPane.add(textLN);
 		textLN.setColumns(10);
 
-		JLabel lblNewLabel_5 = new JLabel("Customer ID");
+		textblnc = new JTextField();
+		textblnc.setBounds(277, 205, 189, 20);
+		contentPane.add(textblnc);
+		textblnc.setColumns(10);
+
+		textLN = new JTextField();
+		textLN.setBounds(279, 266, 189, 20);
+		contentPane.add(textLN);
+		textLN.setColumns(10);
+
+		JLabel lblNewLabel_5 = new JLabel("Address");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_5.setBounds(67, 298, 199, 14);
 		contentPane.add(lblNewLabel_5);
@@ -277,7 +275,7 @@ public class DepositeFrame extends JFrame {
 		contentPane.add(textID);
 		textID.setColumns(10);
 
-		JLabel lblNewLabel_6 = new JLabel("Date");
+		JLabel lblNewLabel_6 = new JLabel("Customer First Name");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_6.setBounds(67, 172, 199, 14);
 		contentPane.add(lblNewLabel_6);
@@ -312,5 +310,6 @@ public class DepositeFrame extends JFrame {
 		});
 		btnNewButton_4.setBounds(164, 364, 89, 23);
 		contentPane.add(btnNewButton_4);
+
 	}
 }

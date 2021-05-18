@@ -63,6 +63,11 @@ public class FraudAlertFrame extends JFrame {
 				// link to the Credit Card Fraud Alerts page
 				CreditCardFraudAlertsFrame cr = new CreditCardFraudAlertsFrame();
 				cr.setVisible(true);
+			
+				
+				cr.toBack();
+				cr.setVisible(true);
+				cr.toFront();	
 
 			}
 		});
@@ -72,22 +77,43 @@ public class FraudAlertFrame extends JFrame {
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Debit Card Fraud Alerts");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			DebitCardFraudAlertFrame db = new DebitCardFraudAlertFrame();
+			db.setVisible(true);
+			
+				
+			db.toBack();
+			db.setVisible(true);
+			db.toFront();
+				
+				
+				
+			}
+		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_1.setBackground(new Color(220, 220, 220));
 		btnNewButton_1.setBounds(342, 107, 226, 37);
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Back");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AdministrationFrame ad = new AdministrationFrame();
+				ad.toBack();
+				setVisible(false);
+				ad.toFront();
+				new AdministrationFrame().setState(java.awt.Frame.NORMAL);
+				
+			}
+		});
 		btnNewButton_2.setBackground(new Color(220, 220, 220));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_2.setBounds(85, 214, 89, 23);
+		btnNewButton_2.setBounds(259, 267, 89, 23);
 		contentPane.add(btnNewButton_2);
-
-		JButton btnNewButton_3 = new JButton("Next");
-		btnNewButton_3.setBackground(new Color(220, 220, 220));
-		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_3.setBounds(414, 214, 89, 23);
-		contentPane.add(btnNewButton_3);
 	}
 
 }
