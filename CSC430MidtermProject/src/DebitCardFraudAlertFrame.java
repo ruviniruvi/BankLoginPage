@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class DebitCardFraudAlertFrame extends JFrame {
 
@@ -46,17 +47,12 @@ public class DebitCardFraudAlertFrame extends JFrame {
 		});
 	}
 
-	
 	Connection con;
 	PreparedStatement insert, update;
-	
-	
-	
-	
-	
+
 	public void Connect() {
 		try {
-			
+
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager
 					.getConnection("jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
@@ -66,43 +62,44 @@ public class DebitCardFraudAlertFrame extends JFrame {
 
 		}
 	}
-	
-	
-	
-	
-	
+
 	/**
 	 * Create the frame.
 	 */
 	public DebitCardFraudAlertFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 659, 453);
+		setBounds(100, 100, 772, 652);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 51, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Debit Card Fraud Alerts");
+		lblNewLabel.setForeground(new Color(245, 245, 245));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(77, 35, 416, 48);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
+		lblNewLabel.setBounds(202, 48, 416, 48);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Please Enter the Date");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(49, 107, 161, 25);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1.setBounds(34, 142, 203, 25);
 		contentPane.add(lblNewLabel_1);
-		
+
 		txtDate = new JTextField();
-		txtDate.setBounds(248, 111, 200, 20);
+		txtDate.setBackground(new Color(248, 248, 255));
+		txtDate.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtDate.setBounds(254, 146, 200, 20);
 		contentPane.add(txtDate);
 		txtDate.setColumns(10);
-		
+
 		JButton btnNewButton = new JButton("Search");
+		btnNewButton.setBackground(new Color(245, 245, 245));
+		btnNewButton.setForeground(new Color(220, 20, 60));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				try {
 
 					String date = txtDate.getText();
@@ -123,9 +120,6 @@ public class DebitCardFraudAlertFrame extends JFrame {
 						String userIDcreditCNo = rs.getString(4);
 						String SSN = rs.getString(3);
 						String amount = rs.getString(2);
-						
-						
-						
 
 						textID.setText(userID.trim());
 						textDebitCardNumber.setText(userIDcreditCNo.trim());
@@ -138,82 +132,98 @@ public class DebitCardFraudAlertFrame extends JFrame {
 				} catch (Exception e1) {
 					System.out.print(e);
 				}
-				
-				
-				
-				
+
 			}
-				
-				
-			
+
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnNewButton.setBounds(498, 110, 89, 23);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(580, 142, 107, 25);
 		contentPane.add(btnNewButton);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("User ID");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_2.setBounds(49, 184, 46, 14);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_2.setBounds(47, 202, 74, 14);
 		contentPane.add(lblNewLabel_2);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Debit Card Number");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_3.setBounds(171, 184, 133, 14);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3.setBounds(179, 202, 133, 14);
 		contentPane.add(lblNewLabel_3);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("Debit Card Holder SSN");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_4.setBounds(343, 184, 150, 14);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_4.setBounds(391, 202, 168, 14);
 		contentPane.add(lblNewLabel_4);
-		
+
 		JLabel lblNewLabel_5 = new JLabel("Amount");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_5.setBounds(513, 185, 74, 14);
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_5.setBounds(616, 202, 74, 14);
 		contentPane.add(lblNewLabel_5);
-		
+
 		textID = new JTextField();
-		textID.setBounds(33, 232, 86, 20);
+		textID.setBackground(new Color(248, 248, 255));
+		textID.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textID.setBounds(34, 251, 113, 20);
 		contentPane.add(textID);
 		textID.setColumns(10);
-		
+
 		textDebitCardNumber = new JTextField();
-		textDebitCardNumber.setBounds(154, 232, 161, 20);
+		textDebitCardNumber.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textDebitCardNumber.setBackground(new Color(248, 248, 255));
+		textDebitCardNumber.setBounds(157, 251, 189, 20);
 		contentPane.add(textDebitCardNumber);
 		textDebitCardNumber.setColumns(10);
-		
+
 		textDCHSSN = new JTextField();
-		textDCHSSN.setBounds(341, 232, 150, 20);
+		textDCHSSN.setBackground(new Color(248, 248, 255));
+		textDCHSSN.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textDCHSSN.setBounds(373, 251, 200, 20);
 		contentPane.add(textDCHSSN);
 		textDCHSSN.setColumns(10);
-		
+
 		textAmount = new JTextField();
-		textAmount.setBounds(501, 232, 103, 20);
+		textAmount.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textAmount.setBackground(new Color(248, 248, 255));
+		textAmount.setBounds(599, 251, 133, 20);
 		contentPane.add(textAmount);
 		textAmount.setColumns(10);
-		
+
 		JButton btnNewButton_1 = new JButton("Back");
+		btnNewButton_1.setBackground(new Color(245, 245, 245));
+		btnNewButton_1.setForeground(new Color(220, 20, 60));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				FraudAlertFrame fd = new FraudAlertFrame ();
+
+				FraudAlertFrame fd = new FraudAlertFrame();
 				fd.toBack();
 				setVisible(false);
 				fd.toFront();
 				new AdministrationFrame().setState(java.awt.Frame.NORMAL);
-				
-				
-				
+
 			}
 		});
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnNewButton_1.setBounds(65, 333, 89, 23);
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton_1.setBounds(76, 505, 189, 38);
 		contentPane.add(btnNewButton_1);
-		
+
 		JButton btnNewButton_2 = new JButton("Next");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnNewButton_2.setBounds(436, 334, 89, 23);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ManageAccount ndmg = new ManageAccount();
+				ndmg.setVisible(true);
+			}
+		});
+		btnNewButton_2.setBackground(new Color(245, 245, 245));
+		btnNewButton_2.setForeground(new Color(220, 20, 60));
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton_2.setBounds(513, 505, 189, 38);
 		contentPane.add(btnNewButton_2);
+
+		JLabel lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setIcon(new ImageIcon("C:\\Users\\Administrator.INTERGY14\\Desktop\\bank-icon.png"));
+		lblNewLabel_6.setBounds(91, 48, 74, 68);
+		contentPane.add(lblNewLabel_6);
 	}
 
 }

@@ -1,17 +1,22 @@
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Color;
-import java.awt.Image;
+import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-//About us page
+public class AboutUs extends JFrame {
 
-public class AboutUs {
-
-	private JFrame frame;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -29,67 +34,68 @@ public class AboutUs {
 		});
 	}
 
-	protected void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	/**
-	 * Create the application.
+	 * Create the frame.
 	 */
 	public AboutUs() {
-		initialize();
-	}
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 773, 652);
+		contentPane = new JPanel();
+		contentPane.setForeground(new Color(255, 204, 204));
+		contentPane.setBackground(new Color(255, 51, 102));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(255, 51, 102));
-		frame.setBounds(100, 100, 574, 405);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-
-		JLabel lblNewLabel = new JLabel("ABOUT US");
-		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 24));
-		lblNewLabel.setBounds(218, 39, 115, 43);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblNewLabel = new JLabel("About Us");
+		lblNewLabel.setBackground(new Color(220, 220, 220));
+		lblNewLabel.setForeground(new Color(245, 245, 245));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
+		lblNewLabel.setBounds(224, 51, 418, 47);
+		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/bank-icon.png")).getImage();
-		lblNewLabel_1.setIcon(new ImageIcon(img));
-		lblNewLabel_1.setBounds(136, 50, 55, 32);
-		frame.getContentPane().add(lblNewLabel_1);
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Administrator.INTERGY14\\Desktop\\bank-icon.png"));
+		lblNewLabel_1.setBounds(60, 48, 72, 72);
+		contentPane.add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("");
-		Image img2 = new ImageIcon(this.getClass().getResource("/piggy-bank-icon.png")).getImage();
-		lblNewLabel_2.setIcon(new ImageIcon(img2));
-		lblNewLabel_2.setBounds(326, 72, 218, 228);
-		frame.getContentPane().add(lblNewLabel_2);
+		JLabel lblNewLabel_2 = new JLabel("Mission Statement");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		lblNewLabel_2.setBounds(149, 144, 259, 29);
+		contentPane.add(lblNewLabel_2);
 
-		JTextArea txtrUsBankIs = new JTextArea();
-		txtrUsBankIs.setBackground(new Color(255, 51, 102));
-		txtrUsBankIs.setText("Introducing banking with utmost security!");
-		txtrUsBankIs.setBounds(12, 172, 332, 22);
-		frame.getContentPane().add(txtrUsBankIs);
+		JTextArea txtrIntroducingBankingWith = new JTextArea();
+		txtrIntroducingBankingWith.setBackground(new Color(255, 51, 102));
+		txtrIntroducingBankingWith.setForeground(new Color(245, 245, 245));
+		txtrIntroducingBankingWith.setFont(new Font("Monospaced", Font.BOLD, 18));
+		txtrIntroducingBankingWith.setText(
+				"Introducing banking with utmost security!\r\nServed by the very best, to the best\r\nPlease reach out to us for any \r\nassistance...");
+		txtrIntroducingBankingWith.setBounds(40, 255, 454, 142);
+		contentPane.add(txtrIntroducingBankingWith);
 
-		JLabel lblNewLabel_3 = new JLabel("Mission Statement");
-		lblNewLabel_3.setFont(new Font("Sitka Text", Font.ITALIC, 16));
-		lblNewLabel_3.setBounds(149, 116, 205, 37);
-		frame.getContentPane().add(lblNewLabel_3);
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.setBackground(new Color(220, 220, 220));
+		btnNewButton.setForeground(new Color(220, 20, 60));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 
-		JTextArea txtrAndOurEmployees = new JTextArea();
-		txtrAndOurEmployees.setBackground(new Color(255, 51, 102));
-		txtrAndOurEmployees.setText("Served by the very best");
-		txtrAndOurEmployees.setBounds(12, 207, 194, 22);
-		frame.getContentPane().add(txtrAndOurEmployees);
+				MidtermProject md = new MidtermProject();
+				md.toBack();
+				setVisible(false);
+				md.toFront();
+				new MidtermProject().setState(java.awt.Frame.NORMAL);
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(310, 525, 190, 38);
+		contentPane.add(btnNewButton);
 
-		JTextArea txtrUseTheLink = new JTextArea();
-		txtrUseTheLink.setBackground(new Color(255, 51, 102));
-		txtrUseTheLink.setText("Please reach out to us for any assistance...");
-		txtrUseTheLink.setBounds(12, 238, 363, 43);
-		frame.getContentPane().add(txtrUseTheLink);
-
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3.setBackground(new Color(255, 255, 255));
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Administrator.INTERGY14\\Desktop\\piggy-bank-icon.png"));
+		lblNewLabel_3.setBounds(502, 188, 245, 227);
+		contentPane.add(lblNewLabel_3);
 	}
 }

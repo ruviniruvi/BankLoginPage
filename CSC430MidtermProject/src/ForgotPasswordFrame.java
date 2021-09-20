@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 
 public class ForgotPasswordFrame extends JFrame {
 
@@ -52,7 +53,7 @@ public class ForgotPasswordFrame extends JFrame {
 
 	public void Connect() {
 		try {
-			
+
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager
 					.getConnection("jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
@@ -69,7 +70,7 @@ public class ForgotPasswordFrame extends JFrame {
 	public ForgotPasswordFrame() {
 		setBackground(new Color(255, 51, 102));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 581, 464);
+		setBounds(100, 100, 773, 652);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 51, 102));
 		contentPane.setForeground(new Color(255, 51, 102));
@@ -78,47 +79,56 @@ public class ForgotPasswordFrame extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Forgot Password");
+		lblNewLabel.setForeground(new Color(220, 220, 220));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(29, 23, 337, 54);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
+		lblNewLabel.setBounds(234, 24, 337, 54);
 		contentPane.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Enter your email address");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(39, 88, 164, 26);
+		JLabel lblNewLabel_1 = new JLabel("Enter Your Email Address");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1.setBounds(41, 127, 210, 26);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Security Question");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(29, 170, 164, 26);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_2.setBounds(41, 241, 164, 26);
 		contentPane.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Answer");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_3.setBounds(29, 220, 157, 26);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_3.setBounds(41, 317, 157, 26);
 		contentPane.add(lblNewLabel_3);
 
 		textEmail = new JTextField();
-		textEmail.setBounds(221, 93, 247, 20);
+		textEmail.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textEmail.setBackground(new Color(245, 245, 245));
+		textEmail.setBounds(295, 132, 339, 21);
 		contentPane.add(textEmail);
 		textEmail.setColumns(10);
 
 		textSQ = new JTextField();
-		textSQ.setBounds(221, 175, 247, 20);
+		textSQ.setBackground(new Color(245, 245, 245));
+		textSQ.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textSQ.setBounds(295, 246, 339, 21);
 		contentPane.add(textSQ);
 		textSQ.setColumns(10);
 
 		textSA = new JTextField();
-		textSA.setBounds(221, 225, 247, 20);
+		textSA.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textSA.setBackground(new Color(245, 245, 245));
+		textSA.setBounds(295, 322, 339, 21);
 		contentPane.add(textSA);
 		textSA.setColumns(10);
 
 		JButton btnNewButton = new JButton("Update Password");
+		btnNewButton.setForeground(new Color(220, 20, 60));
+		btnNewButton.setBackground(new Color(220, 220, 220));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
-					//connection to the database to get and verify data for update password
+					// connection to the database to get and verify data for update password
 
 					String email = textEmail.getText();
 					String securityAnswer = textSA.getText();
@@ -132,15 +142,33 @@ public class ForgotPasswordFrame extends JFrame {
 
 					// update the password when customer enter new password
 
-					update = con.prepareStatement("UPDATE USERS SET EMPLOYEE_PASSWORD ='" + newPassword
-							+ " WHERE BANKER_EMAIL = '" + email + " AND SECURITY_QUESTION_ANSWER = '" + sequrityQ);
+					// update = con.prepareStatement("UPDATE USERS SET EMPLOYEE_PASSWORD =?" +
+					// newPassword
+					// + " WHERE BANKER_EMAIL = ?" + email + " AND SECURITY_QUESTION_ANSWER = ?" +
+					// securityAnswer);
+
+					update = con.prepareStatement(
+							"UPDATE USERS SET EMPLOYEE_PASSWORD =?  WHERE BANKER_EMAIL = ? AND SECURITY_QUESTION_ANSWER = ? ");
+					// update = con.prepareStatement("UPDATE USERS SET EMPLOYEE_PASSWORD = ?"
+					// WHERE BANKER_EMAIL = ?" + textEmail.getText() + " AND
+					// SECURITY_QUESTION_ANSWER = '" + textSQ.getText());
 
 					update.setString(1, newPassword);
 
 					update.executeUpdate();
 
+					// PreparedStatement st = (PreparedStatement) con.prepareStatement ("UPDATE
+					// USERS SET EMPLOYEE_PASSWORD = '"+ newPass.getText().toString()
+					// + " WHERE BANKER_EMAIL = '" + textEmail.getText() + " AND
+					// SECURITY_QUESTION_ANSWER = '" + textSQ.getText());
+
+					// st.setString(1, newPassword);
+					// st.setString(2, email);
+					// st.setString(3, sequrityQ);
+
+					// st.executeUpdate();
 					JOptionPane.showMessageDialog(null, "  Successfully updated! .");
-					con.commit();
+					// con.commit();
 
 					con.close();
 				} catch (Exception e1) {
@@ -154,11 +182,13 @@ public class ForgotPasswordFrame extends JFrame {
 			}
 
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton.setBounds(304, 340, 164, 23);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton.setBounds(445, 499, 189, 36);
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Back");
+		btnNewButton_1.setForeground(new Color(220, 20, 60));
+		btnNewButton_1.setBackground(new Color(220, 220, 220));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -169,11 +199,13 @@ public class ForgotPasswordFrame extends JFrame {
 				new MidtermProject().setState(java.awt.Frame.NORMAL);
 			}
 		});
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_1.setBounds(39, 340, 124, 23);
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton_1.setBounds(129, 499, 189, 36);
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Search");
+		btnNewButton_2.setBackground(new Color(220, 220, 220));
+		btnNewButton_2.setForeground(new Color(220, 20, 60));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -205,17 +237,24 @@ public class ForgotPasswordFrame extends JFrame {
 
 			}
 		});
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_2.setBounds(221, 124, 89, 23);
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton_2.setBounds(295, 180, 189, 36);
 		contentPane.add(btnNewButton_2);
 
-		JLabel lblNewLabel_4 = new JLabel("New password");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_4.setBounds(29, 275, 161, 26);
+		JLabel lblNewLabel_4 = new JLabel("New Password");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_4.setBounds(41, 386, 161, 26);
 		contentPane.add(lblNewLabel_4);
 
 		newPass = new JPasswordField();
-		newPass.setBounds(221, 280, 247, 20);
+		newPass.setFont(new Font("Tahoma", Font.BOLD, 11));
+		newPass.setBackground(new Color(245, 245, 245));
+		newPass.setBounds(295, 391, 339, 21);
 		contentPane.add(newPass);
+
+		JLabel lblNewLabel_5 = new JLabel("New label");
+		lblNewLabel_5.setIcon(new ImageIcon("C:\\Users\\Administrator.INTERGY14\\Desktop\\bank-icon.png"));
+		lblNewLabel_5.setBounds(62, 26, 69, 72);
+		contentPane.add(lblNewLabel_5);
 	}
 }
