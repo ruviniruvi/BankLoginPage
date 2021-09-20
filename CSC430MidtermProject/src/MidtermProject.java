@@ -4,8 +4,11 @@
 //this code references a database which holds the bank employee information including username and password
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.Window;
 import java.sql.*;
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,10 +22,12 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
 import javax.swing.JPasswordField;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class MidtermProject {
 
@@ -74,37 +79,44 @@ public class MidtermProject {
 
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(220, 220, 220));
 		frame.setBounds(100, 100, 773, 656);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Bank Management System");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel.setForeground(new Color(220, 20, 60));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel.setBounds(231, 41, 434, 53);
 		frame.getContentPane().add(lblNewLabel);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 51, 102));
-		panel.setBounds(55, 121, 665, 308);
+		panel.setBounds(56, 126, 665, 425);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
 		JLabel lblNewLabel_1 = new JLabel("Username");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(12, 81, 112, 46);
+		lblNewLabel_1.setBounds(56, 87, 112, 46);
 		panel.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Password");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_2.setBounds(12, 143, 98, 30);
+		lblNewLabel_2.setBounds(55, 166, 98, 30);
 		panel.add(lblNewLabel_2);
 
 		txtUN = new JTextField();
-		txtUN.setBounds(122, 94, 208, 30);
+		txtUN.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtUN.setBackground(new Color(245, 245, 245));
+		txtUN.setBounds(204, 97, 208, 30);
 		panel.add(txtUN);
 		txtUN.setColumns(10);
 
 		JButton btnNewButton = new JButton("Login");
+		btnNewButton.setForeground(new Color(220, 20, 60));
+		btnNewButton.setBackground(new Color(211, 211, 211));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String UN = txtUN.getText();
@@ -123,6 +135,7 @@ public class MidtermProject {
 
 					if (rs.next()) {
 						JOptionPane.showMessageDialog(null, " Login Sucessfully.");
+						frame.dispose();
 						// when login success link to the Administration page
 						AdministrationFrame ad = new AdministrationFrame();
 						ad.setVisible(true);
@@ -138,10 +151,12 @@ public class MidtermProject {
 
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setBounds(48, 218, 105, 38);
+		btnNewButton.setBounds(48, 290, 105, 38);
 		panel.add(btnNewButton);
 
 		JButton btnClear = new JButton("Clear");
+		btnClear.setForeground(new Color(220, 20, 60));
+		btnClear.setBackground(new Color(211, 211, 211));
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtUN.setText(null);
@@ -149,10 +164,12 @@ public class MidtermProject {
 			}
 		});
 		btnClear.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnClear.setBounds(171, 218, 105, 38);
+		btnClear.setBounds(177, 290, 105, 38);
 		panel.add(btnClear);
 
 		JButton btnExit = new JButton("Exit");
+		btnExit.setForeground(new Color(220, 20, 60));
+		btnExit.setBackground(new Color(211, 211, 211));
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MidtermProject = new JFrame("Exit");
@@ -164,44 +181,56 @@ public class MidtermProject {
 		});
 
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnExit.setBounds(288, 218, 105, 38);
+		btnExit.setBounds(307, 290, 105, 38);
 		panel.add(btnExit);
 
 		JButton btnAboutUs = new JButton("About Us");
+		btnAboutUs.setForeground(new Color(220, 20, 60));
+		btnAboutUs.setBackground(new Color(211, 211, 211));
 		btnAboutUs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				/*
-				 * //linking to AboutUs page AboutUs au = new AboutUs(); frame.setVisible(true);
-				 * 
-				 */
-				
-				
-				
-				AboutUs au = new AboutUs(); 
-				au.setVisible(true);
+				// linking to AboutUs page AboutUs
+
+				// frame.dispose();
+				AboutUs ab = new AboutUs();
+				ab.setVisible(true);
+
+				ab.toBack();
+				ab.setVisible(true);
+
+				ab.toFront();
+				// frame.dispose();
 
 			}
 		});
 		btnAboutUs.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnAboutUs.setBounds(484, 89, 169, 30);
+		btnAboutUs.setBounds(463, 91, 190, 38);
 		panel.add(btnAboutUs);
 
 		JButton btnHelp = new JButton("Help");
+		btnHelp.setForeground(new Color(220, 20, 60));
+		btnHelp.setBackground(new Color(211, 211, 211));
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-				AboutUs hp = new AboutUs(); 
-				hp.setVisible(true);
+
+				// frame.dispose();
+				HelpFrame ab = new HelpFrame();
+				ab.setVisible(true);
+
+				ab.toBack();
+				ab.setVisible(true);
+				ab.toFront();
+
 			}
 		});
 		btnHelp.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnHelp.setBounds(484, 143, 169, 30);
+		btnHelp.setBounds(463, 195, 190, 38);
 		panel.add(btnHelp);
 
 		JButton btnForgotPassword = new JButton("Forgot Password");
+		btnForgotPassword.setForeground(new Color(220, 20, 60));
+		btnForgotPassword.setBackground(new Color(211, 211, 211));
 		btnForgotPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -216,7 +245,7 @@ public class MidtermProject {
 			}
 		});
 		btnForgotPassword.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnForgotPassword.setBounds(463, 200, 190, 38);
+		btnForgotPassword.setBounds(463, 290, 190, 38);
 		panel.add(btnForgotPassword);
 
 		JSeparator separator = new JSeparator();
@@ -228,18 +257,20 @@ public class MidtermProject {
 		panel.add(separator_1);
 
 		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(37, 203, 356, 2);
+		separator_2.setBackground(new Color(192, 192, 192));
+		separator_2.setBounds(56, 254, 356, 2);
 		panel.add(separator_2);
 
 		txtPW = new JPasswordField();
-		txtPW.setBackground(Color.WHITE);
-		txtPW.setBounds(122, 144, 208, 30);
+		txtPW.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtPW.setBackground(new Color(245, 245, 245));
+		txtPW.setBounds(204, 170, 208, 30);
 		panel.add(txtPW);
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		Image img = new ImageIcon(this.getClass().getResource("/bank-icon.png")).getImage();
 		lblNewLabel_3.setIcon(new ImageIcon(img));
-		lblNewLabel_3.setBounds(94, 54, 82, 25);
+		lblNewLabel_3.setBounds(87, 22, 72, 72);
 		frame.getContentPane().add(lblNewLabel_3);
 
 	}
@@ -261,8 +292,7 @@ public class MidtermProject {
 
 	public void setVisible(boolean b) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 }
