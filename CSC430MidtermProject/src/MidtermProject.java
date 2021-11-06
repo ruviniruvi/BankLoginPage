@@ -79,7 +79,7 @@ public class MidtermProject {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(220, 220, 220));
+		frame.getContentPane().setBackground(new Color(211, 211, 211));
 		frame.setBounds(100, 100, 773, 656);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -92,8 +92,8 @@ public class MidtermProject {
 		frame.getContentPane().add(lblNewLabel);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 51, 102));
-		panel.setBounds(56, 126, 665, 425);
+		panel.setBackground(new Color(255, 250, 250));
+		panel.setBounds(43, 126, 665, 425);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -115,8 +115,8 @@ public class MidtermProject {
 		txtUN.setColumns(10);
 
 		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setForeground(new Color(220, 20, 60));
-		btnNewButton.setBackground(new Color(211, 211, 211));
+		btnNewButton.setForeground(new Color(178, 34, 34));
+		btnNewButton.setBackground(new Color(255, 228, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String UN = txtUN.getText();
@@ -155,8 +155,8 @@ public class MidtermProject {
 		panel.add(btnNewButton);
 
 		JButton btnClear = new JButton("Clear");
-		btnClear.setForeground(new Color(220, 20, 60));
-		btnClear.setBackground(new Color(211, 211, 211));
+		btnClear.setForeground(new Color(178, 34, 34));
+		btnClear.setBackground(new Color(255, 228, 225));
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtUN.setText(null);
@@ -168,8 +168,8 @@ public class MidtermProject {
 		panel.add(btnClear);
 
 		JButton btnExit = new JButton("Exit");
-		btnExit.setForeground(new Color(220, 20, 60));
-		btnExit.setBackground(new Color(211, 211, 211));
+		btnExit.setForeground(new Color(178, 34, 34));
+		btnExit.setBackground(new Color(255, 228, 225));
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MidtermProject = new JFrame("Exit");
@@ -185,8 +185,8 @@ public class MidtermProject {
 		panel.add(btnExit);
 
 		JButton btnAboutUs = new JButton("About Us");
-		btnAboutUs.setForeground(new Color(220, 20, 60));
-		btnAboutUs.setBackground(new Color(211, 211, 211));
+		btnAboutUs.setForeground(new Color(178, 34, 34));
+		btnAboutUs.setBackground(new Color(255, 228, 225));
 		btnAboutUs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -209,8 +209,8 @@ public class MidtermProject {
 		panel.add(btnAboutUs);
 
 		JButton btnHelp = new JButton("Help");
-		btnHelp.setForeground(new Color(220, 20, 60));
-		btnHelp.setBackground(new Color(211, 211, 211));
+		btnHelp.setForeground(new Color(178, 34, 34));
+		btnHelp.setBackground(new Color(255, 228, 225));
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -229,8 +229,8 @@ public class MidtermProject {
 		panel.add(btnHelp);
 
 		JButton btnForgotPassword = new JButton("Forgot Password");
-		btnForgotPassword.setForeground(new Color(220, 20, 60));
-		btnForgotPassword.setBackground(new Color(211, 211, 211));
+		btnForgotPassword.setForeground(new Color(178, 34, 34));
+		btnForgotPassword.setBackground(new Color(255, 228, 225));
 		btnForgotPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 

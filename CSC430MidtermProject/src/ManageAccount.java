@@ -70,7 +70,7 @@ public class ManageAccount extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 773, 652);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 51, 102));
+		contentPane.setBackground(new Color(220, 220, 220));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -78,7 +78,7 @@ public class ManageAccount extends JFrame {
 		JLabel lblNewLabel = new JLabel("Manage Account");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBackground(Color.BLACK);
-		lblNewLabel.setForeground(new Color(245, 245, 245));
+		lblNewLabel.setForeground(new Color(220, 20, 60));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel.setBounds(279, 37, 329, 29);
 		contentPane.add(lblNewLabel);
@@ -89,14 +89,14 @@ public class ManageAccount extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		JComboBox cmbCardType = new JComboBox();
-		cmbCardType.setForeground(new Color(220, 20, 60));
-		cmbCardType.setBackground(new Color(248, 248, 255));
+		cmbCardType.setForeground(new Color(0, 0, 0));
+		cmbCardType.setBackground(new Color(245, 245, 245));
 		cmbCardType.setFont(new Font("Tahoma", Font.BOLD, 11));
 		cmbCardType.addItem("Credit Card");
 		cmbCardType.addItem("Debit Card");
 		cmbCardType.setSelectedItem(null);
 		cmbCardType.setToolTipText("");
-		cmbCardType.setBounds(304, 164, 174, 22);
+		cmbCardType.setBounds(304, 164, 174, 39);
 		contentPane.add(cmbCardType);
 
 		JLabel lblNewLabel_2 = new JLabel("Card Number");
@@ -115,15 +115,15 @@ public class ManageAccount extends JFrame {
 		contentPane.add(lblNewLabel_4);
 
 		txtSSN = new JTextField();
-		txtSSN.setBackground(new Color(248, 248, 255));
+		txtSSN.setBackground(new Color(245, 245, 245));
 		txtSSN.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtSSN.setBounds(304, 232, 174, 22);
+		txtSSN.setBounds(304, 232, 174, 39);
 		contentPane.add(txtSSN);
 		txtSSN.setColumns(10);
 
 		JButton btnNewButton = new JButton("Search");
-		btnNewButton.setBackground(new Color(245, 245, 245));
-		btnNewButton.setForeground(new Color(220, 20, 60));
+		btnNewButton.setBackground(new Color(255, 228, 225));
+		btnNewButton.setForeground(new Color(178, 34, 34));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -162,7 +162,7 @@ public class ManageAccount extends JFrame {
 		});
 
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setBounds(589, 229, 147, 25);
+		btnNewButton.setBounds(590, 237, 147, 39);
 		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel_5 = new JLabel("Expiration Date");
@@ -171,23 +171,23 @@ public class ManageAccount extends JFrame {
 		contentPane.add(lblNewLabel_5);
 
 		txtCardNum = new JTextField();
-		txtCardNum.setBackground(new Color(248, 248, 255));
+		txtCardNum.setBackground(new Color(245, 245, 245));
 		txtCardNum.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtCardNum.setBounds(304, 304, 174, 22);
+		txtCardNum.setBounds(304, 304, 174, 39);
 		contentPane.add(txtCardNum);
 		txtCardNum.setColumns(10);
 
 		txtCreditLimit = new JTextField();
-		txtCreditLimit.setBackground(new Color(248, 248, 255));
+		txtCreditLimit.setBackground(new Color(245, 245, 245));
 		txtCreditLimit.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtCreditLimit.setBounds(304, 388, 174, 22);
+		txtCreditLimit.setBounds(304, 388, 174, 39);
 		contentPane.add(txtCreditLimit);
 		txtCreditLimit.setColumns(10);
 
 		txtExpDate = new JTextField();
-		txtExpDate.setBackground(new Color(248, 248, 255));
+		txtExpDate.setBackground(new Color(245, 245, 245));
 		txtExpDate.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtExpDate.setBounds(304, 455, 174, 22);
+		txtExpDate.setBounds(304, 455, 174, 39);
 		contentPane.add(txtExpDate);
 		txtExpDate.setColumns(10);
 
@@ -204,10 +204,10 @@ public class ManageAccount extends JFrame {
 
 			}
 		});
-		btnNewButton_1.setForeground(new Color(220, 20, 60));
-		btnNewButton_1.setBackground(new Color(245, 245, 245));
+		btnNewButton_1.setForeground(new Color(178, 34, 34));
+		btnNewButton_1.setBackground(new Color(255, 228, 225));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton_1.setBounds(590, 458, 146, 25);
+		btnNewButton_1.setBounds(590, 458, 146, 39);
 		contentPane.add(btnNewButton_1);
 
 		JLabel lblNewLabel_6 = new JLabel("");
@@ -217,7 +217,7 @@ public class ManageAccount extends JFrame {
 		contentPane.add(lblNewLabel_6);
 
 		JButton btnNewButton_2 = new JButton("Back");
-		btnNewButton_2.setBackground(new Color(255, 250, 250));
+		btnNewButton_2.setBackground(new Color(255, 228, 225));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -230,7 +230,7 @@ public class ManageAccount extends JFrame {
 			}
 		});
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton_2.setForeground(new Color(220, 20, 60));
+		btnNewButton_2.setForeground(new Color(178, 34, 34));
 		btnNewButton_2.setBounds(304, 532, 188, 39);
 		contentPane.add(btnNewButton_2);
 	}

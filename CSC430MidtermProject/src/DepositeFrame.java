@@ -54,9 +54,6 @@ public class DepositeFrame extends JFrame {
 	PreparedStatement insert, update;
 
 	private JTextField textblnc;
-	private JTextField textFN;
-	private JTextField textLN;
-	private JTextField textID;
 	private JTextField textDate;
 	private JTextField textWAmount;
 
@@ -91,13 +88,13 @@ public class DepositeFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 773, 652);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 51, 102));
+		contentPane.setBackground(new Color(220, 220, 220));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Deposits");
-		lblNewLabel.setForeground(new Color(245, 245, 245));
+		lblNewLabel.setForeground(new Color(220, 20, 60));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel.setBounds(285, 32, 252, 32);
@@ -112,24 +109,25 @@ public class DepositeFrame extends JFrame {
 
 		JLabel lblCurrentBalance = new JLabel("Current Balance");
 		lblCurrentBalance.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblCurrentBalance.setBounds(37, 224, 200, 24);
+		lblCurrentBalance.setBounds(37, 270, 200, 24);
 		contentPane.add(lblCurrentBalance);
 
 		JLabel lblNewLabel_2 = new JLabel("Deposit Amount");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_2.setBounds(37, 418, 200, 24);
+		lblNewLabel_2.setBounds(37, 343, 200, 24);
 		contentPane.add(lblNewLabel_2);
 
 		txtacc = new JTextField();
+		txtacc.setBackground(new Color(245, 245, 245));
 		txtacc.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtacc.setBounds(266, 149, 227, 24);
+		txtacc.setBounds(266, 149, 227, 38);
 		contentPane.add(txtacc);
 		txtacc.setColumns(10);
 
 		JButton btnNewButton = new JButton("Find");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setForeground(new Color(220, 20, 60));
-		btnNewButton.setBackground(new Color(245, 245, 245));
+		btnNewButton.setForeground(new Color(178, 34, 34));
+		btnNewButton.setBackground(new Color(255, 228, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("null")
 			public void actionPerformed(ActionEvent e) {
@@ -144,22 +142,17 @@ public class DepositeFrame extends JFrame {
 							"jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
 
 					insert = con.prepareStatement(
-							"SELECT C.CUSTOMER_FIRST_NAME,C.CUSTOMER_LAST_NAME, C.CUSTOMER_ID, A.CURRENT_BALANCE FROM ACCOUNTS AS A, CUSTOMERS AS C WHERE ACCOUNT_NUMBER = ?");
+							
+							"SELECT 	A.CURRENT_BALANCE FROM ACCOUNTS AS A WHERE ACCOUNT_NUMBER = ?");
 					insert.setString(1, acNo);
 					ResultSet rs = insert.executeQuery();
 
 					if (rs.next()) {
 
-						String firstname = rs.getString(1);
-						String balance = rs.getString(4);
-						String lastname = rs.getString(2);
-						String id = rs.getString(3);
-
+						
+						String balance = rs.getString(1);
 						textblnc.setText(balance.trim());
-						textFN.setText(firstname.trim());
-						textLN.setText(lastname.trim());
-						textID.setText(id.trim());
-
+						
 					} else
 						JOptionPane.showMessageDialog(null, " Incorrect customer account number. Please try again! .");
 					con.close();
@@ -171,18 +164,19 @@ public class DepositeFrame extends JFrame {
 
 			}
 		});
-		btnNewButton.setBounds(507, 138, 107, 38);
+		btnNewButton.setBounds(503, 147, 107, 40);
 		contentPane.add(btnNewButton);
 
 		textAmount = new JTextField();
+		textAmount.setBackground(new Color(245, 245, 245));
 		textAmount.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textAmount.setBounds(266, 420, 227, 24);
+		textAmount.setBounds(266, 345, 227, 38);
 		contentPane.add(textAmount);
 		textAmount.setColumns(10);
 
 		JButton btnNewButton_1 = new JButton("OK");
-		btnNewButton_1.setBackground(new Color(245, 245, 245));
-		btnNewButton_1.setForeground(new Color(220, 20, 60));
+		btnNewButton_1.setBackground(new Color(255, 228, 225));
+		btnNewButton_1.setForeground(new Color(178, 34, 34));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -192,9 +186,6 @@ public class DepositeFrame extends JFrame {
 					// money
 					String acNo = txtacc.getText();
 
-					String id = textID.getText();
-					String firstname = textFN.getText();
-					String lastname = textLN.getText();
 					String date = textDate.getText();
 					String depositAmount = textAmount.getText();
 
@@ -204,14 +195,11 @@ public class DepositeFrame extends JFrame {
 							"jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
 
 					insert = con.prepareStatement(
-							"INSERT INTO TRANSACTIONS( ACCOUNT_NUMBER, CUSTOMER_FIRST_NAME,CUSTOMER_LAST_NAME,  CUSTOMER_ID, TRANSACTION_DATE,  DEPOSIT_AMOUNT) VALUES(?,?,?,?,?,?  )");
+							"INSERT INTO TRANSACTIONS( ACCOUNT_NUMBER, TRANSACTION_DATE,  DEPOSIT_AMOUNT) VALUES(?,?,?  )");
 
 					insert.setString(1, acNo);
-					insert.setString(2, firstname);
-					insert.setString(3, lastname);
-					insert.setString(4, id);
-					insert.setString(5, date);
-					insert.setString(6, depositAmount);
+					insert.setString(2, date);
+					insert.setString(3, depositAmount);
 
 					insert.executeUpdate();
 
@@ -236,12 +224,12 @@ public class DepositeFrame extends JFrame {
 
 			}
 		});
-		btnNewButton_1.setBounds(525, 411, 189, 38);
+		btnNewButton_1.setBounds(503, 336, 189, 38);
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Clear");
-		btnNewButton_2.setBackground(new Color(245, 245, 245));
-		btnNewButton_2.setForeground(new Color(220, 20, 60));
+		btnNewButton_2.setBackground(new Color(255, 228, 225));
+		btnNewButton_2.setForeground(new Color(178, 34, 34));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -251,74 +239,43 @@ public class DepositeFrame extends JFrame {
 
 			}
 		});
-		btnNewButton_2.setBounds(525, 544, 189, 38);
+		btnNewButton_2.setBounds(543, 544, 189, 38);
 		contentPane.add(btnNewButton_2);
 
-		JLabel lblNewLabel_4 = new JLabel("Customer First Name");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_4.setBounds(37, 277, 199, 18);
-		contentPane.add(lblNewLabel_4);
-
 		textblnc = new JTextField();
+		textblnc.setBackground(new Color(245, 245, 245));
 		textblnc.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textblnc.setBounds(266, 226, 227, 24);
+		textblnc.setBounds(266, 272, 227, 38);
 		contentPane.add(textblnc);
 		textblnc.setColumns(10);
 
-		textFN = new JTextField();
-		textFN.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textFN.setBounds(266, 276, 224, 24);
-		contentPane.add(textFN);
-		textFN.setColumns(10);
-
-		JLabel lblNewLabel_3 = new JLabel("Customer Last Name");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_3.setBounds(37, 317, 199, 24);
-		contentPane.add(lblNewLabel_3);
-
-		textLN = new JTextField();
-		textLN.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textLN.setBounds(269, 319, 224, 24);
-		contentPane.add(textLN);
-		textLN.setColumns(10);
-
-		JLabel lblNewLabel_5 = new JLabel("Customer ID");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_5.setBounds(38, 377, 199, 14);
-		contentPane.add(lblNewLabel_5);
-
-		textID = new JTextField();
-		textID.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textID.setBounds(266, 374, 227, 24);
-		contentPane.add(textID);
-		textID.setColumns(10);
-
 		JLabel lblNewLabel_6 = new JLabel("Date");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_6.setBounds(37, 193, 199, 14);
+		lblNewLabel_6.setBounds(37, 211, 199, 14);
 		contentPane.add(lblNewLabel_6);
 
 		textDate = new JTextField();
+		textDate.setBackground(new Color(245, 245, 245));
 		textDate.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textDate.setBounds(266, 190, 227, 25);
+		textDate.setBounds(266, 208, 227, 38);
 		contentPane.add(textDate);
 		textDate.setColumns(10);
 
 		JButton btnNewButton_3 = new JButton("Clear");
-		btnNewButton_3.setBackground(new Color(245, 245, 245));
-		btnNewButton_3.setForeground(new Color(220, 20, 60));
+		btnNewButton_3.setBackground(new Color(255, 228, 225));
+		btnNewButton_3.setForeground(new Color(178, 34, 34));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtacc.setText(null);
 			}
 		});
-		btnNewButton_3.setBounds(641, 138, 106, 38);
+		btnNewButton_3.setBounds(626, 145, 106, 38);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Back");
-		btnNewButton_4.setBackground(new Color(245, 245, 245));
-		btnNewButton_4.setForeground(new Color(220, 20, 60));
+		btnNewButton_4.setBackground(new Color(255, 228, 225));
+		btnNewButton_4.setForeground(new Color(178, 34, 34));
 		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -342,17 +299,18 @@ public class DepositeFrame extends JFrame {
 		
 		JLabel lblNewLabel_8 = new JLabel("Withdrawal Amount");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_8.setBounds(37, 477, 170, 24);
+		lblNewLabel_8.setBounds(37, 409, 170, 24);
 		contentPane.add(lblNewLabel_8);
 		
 		textWAmount = new JTextField();
-		textWAmount.setBackground(new Color(248, 248, 255));
+		textWAmount.setBackground(new Color(245, 245, 245));
 		textWAmount.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textWAmount.setBounds(266, 477, 227, 24);
+		textWAmount.setBounds(266, 411, 227, 38);
 		contentPane.add(textWAmount);
 		textWAmount.setColumns(10);
 		
 		JButton btnNewButton_5 = new JButton("OK");
+		btnNewButton_5.setBackground(new Color(255, 228, 225));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -361,9 +319,6 @@ public class DepositeFrame extends JFrame {
 					// money
 					String acNo = txtacc.getText();
 
-					String id = textID.getText();
-					String firstname = textFN.getText();
-					String lastname = textLN.getText();
 					String date = textDate.getText();
 					String withdrawAmount = textWAmount.getText();
 
@@ -373,14 +328,11 @@ public class DepositeFrame extends JFrame {
 							"jdbc:sqlserver://localhost:1433;database=BANK_DATABASE;integratedSecurity=true;");
 
 					insert = con.prepareStatement(
-							"INSERT INTO TRANSACTIONS( ACCOUNT_NUMBER, CUSTOMER_FIRST_NAME,CUSTOMER_LAST_NAME,  CUSTOMER_ID, TRANSACTION_DATE,  WITHDRAWAL_AMOUNT) VALUES(?,?,?,?,?,?  )");
+							"INSERT INTO TRANSACTIONS( ACCOUNT_NUMBER,  TRANSACTION_DATE,  WITHDRAWAL_AMOUNT) VALUES(?,?,?  )");
 
 					insert.setString(1, acNo);
-					insert.setString(2, firstname);
-					insert.setString(3, lastname);
-					insert.setString(4, id);
-					insert.setString(5, date);
-					insert.setString(6,withdrawAmount);
+					insert.setString(2, date);
+					insert.setString(3,withdrawAmount);
 
 					insert.executeUpdate();
 
@@ -407,9 +359,9 @@ public class DepositeFrame extends JFrame {
 				
 			}
 		});
-		btnNewButton_5.setForeground(new Color(220, 20, 60));
+		btnNewButton_5.setForeground(new Color(178, 34, 34));
 		btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton_5.setBounds(525, 472, 189, 38);
+		btnNewButton_5.setBounds(503, 402, 189, 38);
 		contentPane.add(btnNewButton_5);
 	}
 }
