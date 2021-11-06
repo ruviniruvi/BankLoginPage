@@ -73,14 +73,14 @@ public class CreditCardFraudAlertsFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 773, 650);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 51, 102));
+		contentPane.setBackground(new Color(220, 220, 220));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Credit Card Fraud  Alerts");
-		lblNewLabel.setForeground(new Color(245, 245, 245));
-		lblNewLabel.setBackground(new Color(245, 245, 245));
+		lblNewLabel.setForeground(new Color(220, 20, 60));
+		lblNewLabel.setBackground(new Color(220, 20, 60));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel.setBounds(230, 28, 395, 49);
@@ -109,22 +109,23 @@ public class CreditCardFraudAlertsFrame extends JFrame {
 		contentPane.add(lblNewLabel_5);
 
 		textID = new JTextField();
-		textID.setBackground(new Color(255, 250, 250));
+		textID.setBackground(new Color(245, 245, 245));
 		textID.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textID.setBounds(27, 247, 133, 20);
+		textID.setBounds(27, 247, 133, 38);
 		contentPane.add(textID);
 		textID.setColumns(10);
 
 		textcreditcard_number = new JTextField();
+		textcreditcard_number.setBackground(new Color(245, 245, 245));
 		textcreditcard_number.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textcreditcard_number.setBounds(170, 247, 214, 20);
+		textcreditcard_number.setBounds(170, 247, 214, 38);
 		contentPane.add(textcreditcard_number);
 		textcreditcard_number.setColumns(10);
 
 		textCredit_amount = new JTextField();
-		textCredit_amount.setBackground(new Color(255, 250, 250));
+		textCredit_amount.setBackground(new Color(245, 245, 245));
 		textCredit_amount.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textCredit_amount.setBounds(600, 247, 133, 20);
+		textCredit_amount.setBounds(600, 247, 133, 38);
 		contentPane.add(textCredit_amount);
 		textCredit_amount.setColumns(10);
 
@@ -135,14 +136,14 @@ public class CreditCardFraudAlertsFrame extends JFrame {
 
 		txtDate = new JTextField();
 		txtDate.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtDate.setBackground(new Color(255, 250, 250));
-		txtDate.setBounds(269, 147, 204, 28);
+		txtDate.setBackground(new Color(245, 245, 245));
+		txtDate.setBounds(269, 147, 204, 38);
 		contentPane.add(txtDate);
 		txtDate.setColumns(10);
 
 		JButton btnNewButton = new JButton("Search");
-		btnNewButton.setBackground(new Color(245, 245, 245));
-		btnNewButton.setForeground(new Color(220, 20, 60));
+		btnNewButton.setBackground(new Color(255, 228, 225));
+		btnNewButton.setForeground(new Color(178, 34, 34));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -182,12 +183,12 @@ public class CreditCardFraudAlertsFrame extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnNewButton.setBounds(573, 147, 110, 26);
+		btnNewButton.setBounds(573, 147, 110, 38);
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Back");
-		btnNewButton_1.setBackground(new Color(245, 245, 245));
-		btnNewButton_1.setForeground(new Color(220, 20, 60));
+		btnNewButton_1.setBackground(new Color(255, 228, 225));
+		btnNewButton_1.setForeground(new Color(178, 34, 34));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -214,8 +215,8 @@ public class CreditCardFraudAlertsFrame extends JFrame {
 				
 			}
 		});
-		btnNewButton_2.setBackground(new Color(245, 245, 245));
-		btnNewButton_2.setForeground(new Color(220, 20, 60));
+		btnNewButton_2.setBackground(new Color(255, 228, 225));
+		btnNewButton_2.setForeground(new Color(178, 34, 34));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_2.setBounds(534, 486, 185, 38);
 		contentPane.add(btnNewButton_2);
@@ -226,9 +227,9 @@ public class CreditCardFraudAlertsFrame extends JFrame {
 		contentPane.add(lblNewLabel_4);
 
 		textCSSN = new JTextField();
-		textCSSN.setBackground(new Color(255, 250, 250));
+		textCSSN.setBackground(new Color(245, 245, 245));
 		textCSSN.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textCSSN.setBounds(405, 247, 165, 20);
+		textCSSN.setBounds(405, 247, 165, 38);
 		contentPane.add(textCSSN);
 		textCSSN.setColumns(10);
 	}

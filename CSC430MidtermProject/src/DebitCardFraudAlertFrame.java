@@ -70,13 +70,13 @@ public class DebitCardFraudAlertFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 772, 652);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 51, 102));
+		contentPane.setBackground(new Color(220, 220, 220));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Debit Card Fraud Alerts");
-		lblNewLabel.setForeground(new Color(245, 245, 245));
+		lblNewLabel.setForeground(new Color(220, 20, 60));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel.setBounds(202, 48, 416, 48);
@@ -88,15 +88,16 @@ public class DebitCardFraudAlertFrame extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		txtDate = new JTextField();
-		txtDate.setBackground(new Color(248, 248, 255));
+		txtDate.setForeground(new Color(245, 245, 245));
+		txtDate.setBackground(new Color(245, 245, 245));
 		txtDate.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtDate.setBounds(254, 146, 200, 20);
+		txtDate.setBounds(259, 137, 200, 38);
 		contentPane.add(txtDate);
 		txtDate.setColumns(10);
 
 		JButton btnNewButton = new JButton("Search");
-		btnNewButton.setBackground(new Color(245, 245, 245));
-		btnNewButton.setForeground(new Color(220, 20, 60));
+		btnNewButton.setBackground(new Color(255, 228, 225));
+		btnNewButton.setForeground(new Color(178, 34, 34));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -137,7 +138,7 @@ public class DebitCardFraudAlertFrame extends JFrame {
 
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setBounds(580, 142, 107, 25);
+		btnNewButton.setBounds(579, 135, 107, 38);
 		contentPane.add(btnNewButton);
 
 		JLabel lblNewLabel_2 = new JLabel("User ID");
@@ -161,36 +162,36 @@ public class DebitCardFraudAlertFrame extends JFrame {
 		contentPane.add(lblNewLabel_5);
 
 		textID = new JTextField();
-		textID.setBackground(new Color(248, 248, 255));
+		textID.setBackground(new Color(245, 245, 245));
 		textID.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textID.setBounds(34, 251, 113, 20);
+		textID.setBounds(34, 251, 113, 38);
 		contentPane.add(textID);
 		textID.setColumns(10);
 
 		textDebitCardNumber = new JTextField();
 		textDebitCardNumber.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textDebitCardNumber.setBackground(new Color(248, 248, 255));
-		textDebitCardNumber.setBounds(157, 251, 189, 20);
+		textDebitCardNumber.setBackground(new Color(245, 245, 245));
+		textDebitCardNumber.setBounds(157, 251, 189, 38);
 		contentPane.add(textDebitCardNumber);
 		textDebitCardNumber.setColumns(10);
 
 		textDCHSSN = new JTextField();
-		textDCHSSN.setBackground(new Color(248, 248, 255));
+		textDCHSSN.setBackground(new Color(245, 245, 245));
 		textDCHSSN.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textDCHSSN.setBounds(373, 251, 200, 20);
+		textDCHSSN.setBounds(373, 251, 200, 38);
 		contentPane.add(textDCHSSN);
 		textDCHSSN.setColumns(10);
 
 		textAmount = new JTextField();
 		textAmount.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textAmount.setBackground(new Color(248, 248, 255));
-		textAmount.setBounds(599, 251, 133, 20);
+		textAmount.setBackground(new Color(245, 245, 245));
+		textAmount.setBounds(599, 251, 133, 38);
 		contentPane.add(textAmount);
 		textAmount.setColumns(10);
 
 		JButton btnNewButton_1 = new JButton("Back");
-		btnNewButton_1.setBackground(new Color(245, 245, 245));
-		btnNewButton_1.setForeground(new Color(220, 20, 60));
+		btnNewButton_1.setBackground(new Color(255, 228, 225));
+		btnNewButton_1.setForeground(new Color(178, 34, 34));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -214,8 +215,8 @@ public class DebitCardFraudAlertFrame extends JFrame {
 				ndmg.setVisible(true);
 			}
 		});
-		btnNewButton_2.setBackground(new Color(245, 245, 245));
-		btnNewButton_2.setForeground(new Color(220, 20, 60));
+		btnNewButton_2.setBackground(new Color(255, 228, 225));
+		btnNewButton_2.setForeground(new Color(178, 34, 34));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_2.setBounds(513, 505, 189, 38);
 		contentPane.add(btnNewButton_2);

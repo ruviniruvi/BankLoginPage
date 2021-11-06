@@ -42,14 +42,14 @@ public class AboutUs extends JFrame {
 		setBounds(100, 100, 773, 652);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(255, 204, 204));
-		contentPane.setBackground(new Color(255, 51, 102));
+		contentPane.setBackground(new Color(220, 220, 220));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("About Us");
 		lblNewLabel.setBackground(new Color(220, 220, 220));
-		lblNewLabel.setForeground(new Color(245, 245, 245));
+		lblNewLabel.setForeground(new Color(220, 20, 60));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel.setBounds(224, 51, 418, 47);
@@ -63,21 +63,21 @@ public class AboutUs extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Mission Statement");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_2.setBounds(149, 144, 259, 29);
+		lblNewLabel_2.setBounds(40, 188, 206, 38);
 		contentPane.add(lblNewLabel_2);
 
 		JTextArea txtrIntroducingBankingWith = new JTextArea();
-		txtrIntroducingBankingWith.setBackground(new Color(255, 51, 102));
-		txtrIntroducingBankingWith.setForeground(new Color(245, 245, 245));
-		txtrIntroducingBankingWith.setFont(new Font("Monospaced", Font.BOLD, 18));
+		txtrIntroducingBankingWith.setBackground(new Color(220, 220, 220));
+		txtrIntroducingBankingWith.setForeground(new Color(0, 0, 0));
+		txtrIntroducingBankingWith.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 18));
 		txtrIntroducingBankingWith.setText(
 				"Introducing banking with utmost security!\r\nServed by the very best, to the best\r\nPlease reach out to us for any \r\nassistance...");
 		txtrIntroducingBankingWith.setBounds(40, 255, 454, 142);
 		contentPane.add(txtrIntroducingBankingWith);
 
 		JButton btnNewButton = new JButton("Back");
-		btnNewButton.setBackground(new Color(220, 220, 220));
-		btnNewButton.setForeground(new Color(220, 20, 60));
+		btnNewButton.setBackground(new Color(255, 228, 225));
+		btnNewButton.setForeground(new Color(178, 34, 34));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 

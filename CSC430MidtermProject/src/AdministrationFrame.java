@@ -40,21 +40,21 @@ public class AdministrationFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 773, 652);
 		contentPane = new JPanel();
-		contentPane.setForeground(new Color(255, 51, 102));
-		contentPane.setBackground(new Color(255, 51, 102));
+		contentPane.setForeground(new Color(255, 255, 255));
+		contentPane.setBackground(new Color(220, 220, 220));
 		contentPane.setBorder(new EmptyBorder(3, 3, 3, 3));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Administration");
-		lblNewLabel.setForeground(new Color(245, 245, 245));
+		lblNewLabel.setForeground(new Color(220, 20, 60));
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(189, 25, 516, 50);
+		lblNewLabel.setBounds(172, 25, 485, 50);
 		contentPane.add(lblNewLabel);
 
-		JButton btnNewButton = new JButton("Create Account");
+		JButton btnNewButton = new JButton("Create Customer Profile");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -67,10 +67,10 @@ public class AdministrationFrame extends JFrame {
 
 			}
 		});
-		btnNewButton.setForeground(new Color(220, 20, 60));
-		btnNewButton.setBackground(new Color(245, 245, 245));
+		btnNewButton.setForeground(new Color(0, 0, 0));
+		btnNewButton.setBackground(new Color(255, 245, 238));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton.setBounds(90, 128, 190, 38);
+		btnNewButton.setBounds(90, 128, 247, 38);
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Manage Account");
@@ -86,14 +86,14 @@ public class AdministrationFrame extends JFrame {
 
 			}
 		});
-		btnNewButton_1.setForeground(new Color(220, 20, 60));
-		btnNewButton_1.setBackground(new Color(245, 245, 245));
+		btnNewButton_1.setForeground(new Color(0, 0, 0));
+		btnNewButton_1.setBackground(new Color(255, 245, 238));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton_1.setBounds(90, 220, 190, 38);
+		btnNewButton_1.setBounds(414, 333, 247, 38);
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("View Transactions");
-		btnNewButton_2.setForeground(new Color(220, 20, 60));
+		btnNewButton_2.setForeground(new Color(0, 0, 0));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -106,13 +106,13 @@ public class AdministrationFrame extends JFrame {
 
 			}
 		});
-		btnNewButton_2.setBackground(new Color(245, 245, 245));
+		btnNewButton_2.setBackground(new Color(255, 245, 238));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton_2.setBounds(90, 333, 190, 38);
+		btnNewButton_2.setBounds(90, 333, 247, 38);
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("Deposits");
-		btnNewButton_3.setForeground(new Color(220, 20, 60));
+		btnNewButton_3.setForeground(new Color(0, 0, 0));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// linking to the fraud alerts page
@@ -124,13 +124,13 @@ public class AdministrationFrame extends JFrame {
 				df.toFront();
 			}
 		});
-		btnNewButton_3.setBackground(new Color(245, 245, 245));
+		btnNewButton_3.setBackground(new Color(255, 245, 238));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton_3.setBounds(471, 128, 190, 38);
+		btnNewButton_3.setBounds(414, 128, 247, 38);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Fraud Alerts");
-		btnNewButton_4.setForeground(new Color(220, 20, 60));
+		btnNewButton_4.setForeground(new Color(0, 0, 0));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// linking to the fraud alerts page
@@ -142,13 +142,13 @@ public class AdministrationFrame extends JFrame {
 				fd.toFront();
 			}
 		});
-		btnNewButton_4.setBackground(new Color(245, 245, 245));
+		btnNewButton_4.setBackground(new Color(255, 245, 238));
 		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton_4.setBounds(471, 220, 190, 38);
+		btnNewButton_4.setBounds(414, 220, 247, 38);
 		contentPane.add(btnNewButton_4);
 
-		JButton btnNewButton_5 = new JButton("Customer Contacts");
-		btnNewButton_5.setForeground(new Color(220, 20, 60));
+		JButton btnNewButton_5 = new JButton("Search Customer Contacts");
+		btnNewButton_5.setForeground(new Color(0, 0, 0));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -161,13 +161,13 @@ public class AdministrationFrame extends JFrame {
 
 			}
 		});
-		btnNewButton_5.setBackground(new Color(245, 245, 245));
+		btnNewButton_5.setBackground(new Color(255, 245, 238));
 		btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton_5.setBounds(471, 333, 190, 38);
+		btnNewButton_5.setBounds(265, 450, 265, 38);
 		contentPane.add(btnNewButton_5);
 
 		JButton btnNewButton_6 = new JButton("Logout");
-		btnNewButton_6.setForeground(new Color(220, 20, 60));
+		btnNewButton_6.setForeground(new Color(178, 34, 34));
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -176,14 +176,35 @@ public class AdministrationFrame extends JFrame {
 				window.frame.setVisible(true);
 			}
 		});
-		btnNewButton_6.setBackground(new Color(220, 220, 220));
+		btnNewButton_6.setBackground(new Color(255, 228, 225));
 		btnNewButton_6.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnNewButton_6.setBounds(314, 489, 190, 38);
+		btnNewButton_6.setBounds(311, 541, 190, 38);
 		contentPane.add(btnNewButton_6);
 
 		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBackground(new Color(153, 204, 153));
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Administrator.INTERGY14\\Desktop\\bank-icon.png"));
 		lblNewLabel_1.setBounds(90, 25, 72, 72);
 		contentPane.add(lblNewLabel_1);
+		
+		JButton btnNewButton_7 = new JButton("Customer Account");
+		btnNewButton_7.setBackground(new Color(255, 245, 238));
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AccountFrame cus = new AccountFrame();
+				cus.setVisible(true);
+
+				cus.toBack();
+				cus.setVisible(true);
+				cus.toFront();
+				
+				
+			}
+		});
+		btnNewButton_7.setForeground(new Color(0, 0, 0));
+		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton_7.setBounds(90, 222, 247, 36);
+		contentPane.add(btnNewButton_7);
 	}
 }

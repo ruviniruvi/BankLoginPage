@@ -81,13 +81,13 @@ public class CustomerContacts extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 773, 652);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 51, 102));
+		contentPane.setBackground(new Color(220, 220, 220));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Customer Contacts");
-		lblNewLabel.setForeground(new Color(245, 245, 245));
+		lblNewLabel.setForeground(new Color(220, 20, 60));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel.setBounds(217, 45, 408, 32);
@@ -102,14 +102,14 @@ public class CustomerContacts extends JFrame {
 
 		txtID = new JTextField();
 		txtID.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtID.setBackground(new Color(248, 248, 255));
-		txtID.setBounds(300, 178, 192, 24);
+		txtID.setBackground(new Color(245, 245, 245));
+		txtID.setBounds(300, 178, 192, 38);
 		contentPane.add(txtID);
 		txtID.setColumns(10);
 
 		JButton btnNewButton = new JButton("Search");
-		btnNewButton.setBackground(new Color(245, 245, 245));
-		btnNewButton.setForeground(new Color(220, 20, 60));
+		btnNewButton.setBackground(new Color(255, 228, 225));
+		btnNewButton.setForeground(new Color(178, 34, 34));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("null")
@@ -160,20 +160,20 @@ public class CustomerContacts extends JFrame {
 		lblNewLabel_2.setBounds(53, 440, 200, 24);
 		contentPane.add(lblNewLabel_2);
 
-		btnNewButton.setBounds(521, 176, 104, 24);
+		btnNewButton.setBounds(521, 176, 104, 40);
 		contentPane.add(btnNewButton);
 
 		textZip = new JTextField();
 		textZip.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textZip.setBackground(new Color(248, 248, 255));
-		textZip.setBounds(300, 444, 192, 24);
+		textZip.setBackground(new Color(245, 245, 245));
+		textZip.setBounds(300, 444, 325, 38);
 		contentPane.add(textZip);
 		textZip.setColumns(10);
 
 		texLN = new JTextField();
 		texLN.setFont(new Font("Tahoma", Font.BOLD, 11));
-		texLN.setBackground(new Color(248, 248, 255));
-		texLN.setBounds(300, 312, 189, 24);
+		texLN.setBackground(new Color(245, 245, 245));
+		texLN.setBounds(300, 312, 325, 38);
 		contentPane.add(texLN);
 		texLN.setColumns(10);
 
@@ -183,9 +183,9 @@ public class CustomerContacts extends JFrame {
 		contentPane.add(lblNewLabel_5);
 
 		textAdr = new JTextField();
-		textAdr.setBackground(new Color(248, 248, 255));
+		textAdr.setBackground(new Color(245, 245, 245));
 		textAdr.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textAdr.setBounds(300, 379, 325, 24);
+		textAdr.setBounds(300, 379, 325, 38);
 		contentPane.add(textAdr);
 		textAdr.setColumns(10);
 
@@ -195,27 +195,27 @@ public class CustomerContacts extends JFrame {
 		contentPane.add(lblNewLabel_6);
 
 		textCFN = new JTextField();
-		textCFN.setBackground(new Color(248, 248, 255));
+		textCFN.setBackground(new Color(245, 245, 245));
 		textCFN.setFont(new Font("Tahoma", Font.BOLD, 12));
-		textCFN.setBounds(300, 256, 189, 24);
+		textCFN.setBounds(300, 256, 325, 38);
 		contentPane.add(textCFN);
 		textCFN.setColumns(10);
 
 		JButton btnNewButton_3 = new JButton("Clear");
-		btnNewButton_3.setBackground(new Color(245, 245, 245));
-		btnNewButton_3.setForeground(new Color(220, 20, 60));
+		btnNewButton_3.setBackground(new Color(255, 228, 225));
+		btnNewButton_3.setForeground(new Color(178, 34, 34));
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtID.setText(null);
 			}
 		});
-		btnNewButton_3.setBounds(643, 176, 104, 24);
+		btnNewButton_3.setBounds(643, 176, 104, 40);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Back");
-		btnNewButton_4.setBackground(new Color(245, 245, 245));
-		btnNewButton_4.setForeground(new Color(220, 20, 60));
+		btnNewButton_4.setBackground(new Color(255, 228, 225));
+		btnNewButton_4.setForeground(new Color(178, 34, 34));
 		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
