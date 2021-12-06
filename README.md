@@ -9,12 +9,14 @@ Designed user-friendy front end using Java Swing then used JDBC to connect MS SQ
 The following functionalities are completed:
 
 * [x] Login page 
-* [x] Update customer profile
-* [x] Create account number
-* [x] Deposite, withdroval and calculate current balance 
+* [x] Create customer profile
+* [x] Create customer account number
+* [x] Deposite, withdrowal and calculate current balance 
+* [x] Update password
+* [x] Search customer contacts
 
 
-## Video Walkthrough
 
-Coming soon!
+
+
 
