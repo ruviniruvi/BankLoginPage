@@ -1,6 +1,9 @@
 
 # Bank Management System
 
+<img src="https://user-images.githubusercontent.com/63685062/155573126-3cb53e6b-70d8-4d27-a472-0570309dbe8a.png" width="1000" height="200" />
+
+
 **Bank Management System** is a Java desktop application that allows users to perform daily banking activities.
 Designed user-friendy front end using Java Swing then used JDBC to connect MS SQL Server as the backend.
 
